@@ -1,4 +1,4 @@
-cd /ete <?php
+<?php
 use Migrations\AbstractMigration;
 
 class CreateMovies extends AbstractMigration
