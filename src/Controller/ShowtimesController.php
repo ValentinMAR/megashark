@@ -49,6 +49,8 @@ class ShowtimesController extends AppController
      */
     public function add()
     {
+        $movies=$this->Showtimes->Movies->find('list');
+        $this->Rooms->Showtimes->find();
         $showtime = $this->Showtimes->newEntity();
         if ($this->request->is('post')) {
             $showtime = $this->Showtimes->patchEntity($showtime, $this->request->getData());
