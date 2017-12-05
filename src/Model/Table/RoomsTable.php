@@ -59,6 +59,7 @@ class RoomsTable extends Table
 
         $validator
             ->scalar('name')
+            ->maxLength('name', 255)
             ->requirePresence('name', 'create')
             ->notEmpty('name');
 
