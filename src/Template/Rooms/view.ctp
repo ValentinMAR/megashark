@@ -39,5 +39,6 @@
             <td><?= h($room->modified) ?></td>
         </tr>
     </table>
-    <?php debug($moviesSemaine->toArray()) ?>
+    <?= h($moviesSemaine) ?>
+    ?>
 </div>

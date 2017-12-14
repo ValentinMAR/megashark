@@ -1,6 +1,7 @@
 <?php
 namespace App\Controller;
 use App\Controller\AppController;
+use Cake\Collection\Collection;
 /**
  * Rooms Controller
  *
@@ -31,7 +32,8 @@ class RoomsController extends AppController
     public function view($id = null)
     {
 
-        $room = $this->Rooms->get($id, ['contain' => ['Showtimes']]);
+        $room = $this->Rooms->get($id, 
+            ['contain' => ['Showtimes']]);
         
         $weekMonday = new \DateTime('monday this week');
         $weekSunday = new \DateTime('sunday this week');
@@ -42,6 +44,11 @@ class RoomsController extends AppController
                  'start >='=>$weekMonday,
                  'start <='=>$weekSunday
             ]);
+            
+        
+        $items = ['lundi' => 1, 'mardi' => 2, 'mercredi' => 3, 'jeudi' => 4, 'vendredi' => 5, 'samedi' => 6, 'dimanche' => 7];
+        $collection = new Collection($items);
+        $collectionClassee = $collection->groupBy($showtime->start->format('N'));
         
         $this->set('moviesSemaine', $moviesSemaine);
         $this->set('room', $room);
